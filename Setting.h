@@ -17,12 +17,6 @@ typedef struct _TAG_ISLAND {
     int right;
 }ISLAND;
 
-
-typedef struct _TAG_ISLAND {
-    int left;
-    int right;
-}ISLAND;
-
 bool judge_flag = true;
 
 time_t start_time = 0, end_time = 0;
@@ -32,14 +26,14 @@ int land[100] = { 0 };
 
 int character_state = 0;
 
-//ƒLƒƒƒ‰ƒNƒ^[‚Ì’†SÀ•W
+//ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ä¸­å¿ƒåº§æ¨™
 int character_x = 30;
 int character_y = 14;
 
 int jump_state = 0;
 
 
-//ƒL[”»’è
+//ã‚­ãƒ¼åˆ¤å®š
 bool is_key_push = false;
 
 
@@ -58,105 +52,105 @@ void judge();
 
 
 
-void charactor(WINDOW* win, int x, int y) {//‰Šúó‘Ô‚Í(x,y)=(30,14)
+void charactor(WINDOW* win, int x, int y) {//åˆæœŸçŠ¶æ…‹ã¯(x,y)=(30,14)
     wattron(win, COLOR_PAIR(3));
-    mvwaddstr(win, y, x, "¡");
-    mvwaddstr(win, y - 1, x - 2, "¡");
-    mvwaddstr(win, y - 1, x, "¡");
-    mvwaddstr(win, y - 1, x + 2, "¡");
-    mvwaddstr(win, y, x - 2, "¡");
-    mvwaddstr(win, y, x + 2, "¡");
-    mvwaddstr(win, y + 1, x - 2, "¡");
-    mvwaddstr(win, y + 1, x, "¡");
-    mvwaddstr(win, y + 1, x + 2, "¡");
-    mvwaddstr(win, y + 2, x, "¡");
-    mvwaddstr(win, y + 3, x, "¡");
-    mvwaddstr(win, y + 3, x - 2, "¡");
-    mvwaddstr(win, y + 4, x - 4, "¡");
-    mvwaddstr(win, y + 3, x + 2, "¡");
-    mvwaddstr(win, y + 4, x + 4, "¡");
-    mvwaddstr(win, y + 4, x, "¡");
-    mvwaddstr(win, y + 5, x, "¡");
-    mvwaddstr(win, y + 6, x - 2, "¡");
-    mvwaddstr(win, y + 6, x + 2, "¡");
-    mvwaddstr(win, y + 7, x - 2, "¡");
-    mvwaddstr(win, y + 7, x + 2, "¡");
+    mvwaddstr(win, y, x, "â– ");
+    mvwaddstr(win, y - 1, x - 2, "â– ");
+    mvwaddstr(win, y - 1, x, "â– ");
+    mvwaddstr(win, y - 1, x + 2, "â– ");
+    mvwaddstr(win, y, x - 2, "â– ");
+    mvwaddstr(win, y, x + 2, "â– ");
+    mvwaddstr(win, y + 1, x - 2, "â– ");
+    mvwaddstr(win, y + 1, x, "â– ");
+    mvwaddstr(win, y + 1, x + 2, "â– ");
+    mvwaddstr(win, y + 2, x, "â– ");
+    mvwaddstr(win, y + 3, x, "â– ");
+    mvwaddstr(win, y + 3, x - 2, "â– ");
+    mvwaddstr(win, y + 4, x - 4, "â– ");
+    mvwaddstr(win, y + 3, x + 2, "â– ");
+    mvwaddstr(win, y + 4, x + 4, "â– ");
+    mvwaddstr(win, y + 4, x, "â– ");
+    mvwaddstr(win, y + 5, x, "â– ");
+    mvwaddstr(win, y + 6, x - 2, "â– ");
+    mvwaddstr(win, y + 6, x + 2, "â– ");
+    mvwaddstr(win, y + 7, x - 2, "â– ");
+    mvwaddstr(win, y + 7, x + 2, "â– ");
 
 }
 
-void sit_charactor(WINDOW* win, int x, int y) {//‰Šúó‘Ô‚Í(x,y)=(30,14)
+void sit_charactor(WINDOW* win, int x, int y) {//åˆæœŸçŠ¶æ…‹ã¯(x,y)=(30,14)
     wattron(win, COLOR_PAIR(3));
-    mvwaddstr(win, y + 1, x, "¡");
-    mvwaddstr(win, y, x - 2, "¡");
-    mvwaddstr(win, y, x, "¡");
-    mvwaddstr(win, y, x + 2, "¡");
-    mvwaddstr(win, y + 1, x - 2, "¡");
-    mvwaddstr(win, y + 1, x + 2, "¡");
-    mvwaddstr(win, y + 2, x - 2, "¡");
-    mvwaddstr(win, y + 2, x, "¡");
-    mvwaddstr(win, y + 2, x + 2, "¡");
-    mvwaddstr(win, y + 3, x, "¡");
-    mvwaddstr(win, y + 4, x, "¡");
-    mvwaddstr(win, y + 4, x - 2, "¡");
-    mvwaddstr(win, y + 5, x - 4, "¡");
-    mvwaddstr(win, y + 4, x + 2, "¡");
-    mvwaddstr(win, y + 5, x + 4, "¡");
-    mvwaddstr(win, y + 5, x, "¡");
-    mvwaddstr(win, y + 6, x - 2, "¡");
-    mvwaddstr(win, y + 6, x + 2, "¡");
-    mvwaddstr(win, y + 7, x - 2, "¡");
-    mvwaddstr(win, y + 7, x + 2, "¡");
+    mvwaddstr(win, y + 1, x, "â– ");
+    mvwaddstr(win, y, x - 2, "â– ");
+    mvwaddstr(win, y, x, "â– ");
+    mvwaddstr(win, y, x + 2, "â– ");
+    mvwaddstr(win, y + 1, x - 2, "â– ");
+    mvwaddstr(win, y + 1, x + 2, "â– ");
+    mvwaddstr(win, y + 2, x - 2, "â– ");
+    mvwaddstr(win, y + 2, x, "â– ");
+    mvwaddstr(win, y + 2, x + 2, "â– ");
+    mvwaddstr(win, y + 3, x, "â– ");
+    mvwaddstr(win, y + 4, x, "â– ");
+    mvwaddstr(win, y + 4, x - 2, "â– ");
+    mvwaddstr(win, y + 5, x - 4, "â– ");
+    mvwaddstr(win, y + 4, x + 2, "â– ");
+    mvwaddstr(win, y + 5, x + 4, "â– ");
+    mvwaddstr(win, y + 5, x, "â– ");
+    mvwaddstr(win, y + 6, x - 2, "â– ");
+    mvwaddstr(win, y + 6, x + 2, "â– ");
+    mvwaddstr(win, y + 7, x - 2, "â– ");
+    mvwaddstr(win, y + 7, x + 2, "â– ");
 
 }
 
-void jump_charactor(WINDOW* win, int x, int y) {//‰Šúó‘Ô‚Í(x,y)=(30,14)
+void jump_charactor(WINDOW* win, int x, int y) {//åˆæœŸçŠ¶æ…‹ã¯(x,y)=(30,14)
     wattron(win, COLOR_PAIR(3));
-    mvwaddstr(win, y, x, "¡");
-    mvwaddstr(win, y - 1, x - 2, "¡");
-    mvwaddstr(win, y - 1, x, "¡");
-    mvwaddstr(win, y - 1, x + 2, "¡");
-    mvwaddstr(win, y, x - 2, "¡");
-    mvwaddstr(win, y, x + 2, "¡");
-    mvwaddstr(win, y + 1, x - 2, "¡");
-    mvwaddstr(win, y + 1, x, "¡");
-    mvwaddstr(win, y + 1, x + 2, "¡");
-    mvwaddstr(win, y + 2, x, "¡");
-    mvwaddstr(win, y + 3, x, "¡");
-    mvwaddstr(win, y + 3, x - 2, "¡");
-    mvwaddstr(win, y + 2, x - 4, "¡");
-    mvwaddstr(win, y + 3, x + 2, "¡");
-    mvwaddstr(win, y + 2, x + 4, "¡");
-    mvwaddstr(win, y + 4, x, "¡");
-    mvwaddstr(win, y + 5, x, "¡");
-    mvwaddstr(win, y + 6, x - 2, "¡");
-    mvwaddstr(win, y + 6, x + 2, "¡");
-    mvwaddstr(win, y + 7, x - 4, "¡");
-    mvwaddstr(win, y + 7, x + 4, "¡");
+    mvwaddstr(win, y, x, "â– ");
+    mvwaddstr(win, y - 1, x - 2, "â– ");
+    mvwaddstr(win, y - 1, x, "â– ");
+    mvwaddstr(win, y - 1, x + 2, "â– ");
+    mvwaddstr(win, y, x - 2, "â– ");
+    mvwaddstr(win, y, x + 2, "â– ");
+    mvwaddstr(win, y + 1, x - 2, "â– ");
+    mvwaddstr(win, y + 1, x, "â– ");
+    mvwaddstr(win, y + 1, x + 2, "â– ");
+    mvwaddstr(win, y + 2, x, "â– ");
+    mvwaddstr(win, y + 3, x, "â– ");
+    mvwaddstr(win, y + 3, x - 2, "â– ");
+    mvwaddstr(win, y + 2, x - 4, "â– ");
+    mvwaddstr(win, y + 3, x + 2, "â– ");
+    mvwaddstr(win, y + 2, x + 4, "â– ");
+    mvwaddstr(win, y + 4, x, "â– ");
+    mvwaddstr(win, y + 5, x, "â– ");
+    mvwaddstr(win, y + 6, x - 2, "â– ");
+    mvwaddstr(win, y + 6, x + 2, "â– ");
+    mvwaddstr(win, y + 7, x - 4, "â– ");
+    mvwaddstr(win, y + 7, x + 4, "â– ");
 
 }
 
 void make_character_state(WINDOW* win) {
 
-    /*ƒL[“ü—Í”»’è*/
-    if ((GetKeyState(VK_SPACE) & 0x80)) {//‰‚ß‚ÄƒL[‚ğ‰Ÿ‚µ‚Ä‚¢‚é‚Æ‚«‚Ìˆ—
+    /*ã‚­ãƒ¼å…¥åŠ›åˆ¤å®š*/
+    if ((GetKeyState(VK_SPACE) & 0x80)) {//åˆã‚ã¦ã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ã„ã‚‹ã¨ãã®å‡¦ç†
 
-        if (is_key_push == false) {//ƒL[‚ğ‰‚ß‚Ä‰Ÿ‚µ‚½‚Ìˆ—
+        if (is_key_push == false) {//ã‚­ãƒ¼ã‚’åˆã‚ã¦æŠ¼ã—ãŸæ™‚ã®å‡¦ç†
             is_key_push = true;
             start_time = clock();
         }
 
-        character_state = 1;//‚µ‚á‚ª‚ñ‚Å‚¢‚éó‘Ô
+        character_state = 1;//ã—ã‚ƒãŒã‚“ã§ã„ã‚‹çŠ¶æ…‹
 
     }
-    else if (!(GetKeyState(VK_SPACE) & 0x80)) {//ƒL[‚ğ‰Ÿ‚µ‚Ä‚È‚¢‚Æ‚«‚Ìˆ—
+    else if (!(GetKeyState(VK_SPACE) & 0x80)) {//ã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ãªã„ã¨ãã®å‡¦ç†
 
-        if (is_key_push == true) {//’·‰Ÿ‚µ‚µ‚Ä‚¢‚ÄA—£‚µ‚½‚Ìˆ—
+        if (is_key_push == true) {//é•·æŠ¼ã—ã—ã¦ã„ã¦ã€é›¢ã—ãŸæ™‚ã®å‡¦ç†
 
             end_time = clock();
 
             total_time = end_time - start_time;
 
-            character_state = 2;//ƒWƒƒƒ“ƒv‚µ‚Ä‚¢‚éó‘Ô
+            character_state = 2;//ã‚¸ãƒ£ãƒ³ãƒ—ã—ã¦ã„ã‚‹çŠ¶æ…‹
 
         }
 
@@ -170,8 +164,8 @@ void draw_island(WINDOW* win, int land[60]) {
     wattron(win, COLOR_PAIR(2));
     for (int i = 0; i < 60; i++) {
         if (land[i] == 1) {
-            mvwaddstr(win, 22, i, "¡");
-            mvwaddstr(win, 23, i, "¡");
+            mvwaddstr(win, 22, i, "â– ");
+            mvwaddstr(win, 23, i, "â– ");
             wrefresh(win);
         }
         else {
@@ -191,7 +185,7 @@ void draw_island(WINDOW* win, int land[60]) {
 
 void move_land(ISLAND islandI[]) {
 
-    memset(land, 0, 60 * sizeof(land[0]));//0‚Å‰Šú‰»
+    memset(land, 0, 60 * sizeof(land[0]));//0ã§åˆæœŸåŒ–
 
     for (int i = 0; i < 4; i++) {//land
         if (islandI[i].left > 0) {
@@ -220,17 +214,17 @@ void create_land(ISLAND islandI[]) {
 void move_character() {
     switch (character_state) {
 
-    case 0://‰Šúó‘Ô
+    case 0://åˆæœŸçŠ¶æ…‹
         character_x--;
         break;
-    case 1://‚µ‚á‚ª‚ñ‚¾ó‘Ô
+    case 1://ã—ã‚ƒãŒã‚“ã çŠ¶æ…‹
         character_x--;
         break;
-    case 2://‚Ç‚ê‚¾‚¯”ò‚Ô‚©‚Ìˆ—
+    case 2://ã©ã‚Œã ã‘é£›ã¶ã‹ã®å‡¦ç†
         jump_state = total_time / 50 + 1;
         character_state = 3;
         break;
-    case 3://ƒWƒƒƒ“ƒv‚Ìˆ—
+    case 3://ã‚¸ãƒ£ãƒ³ãƒ—ã®å‡¦ç†
         if (jump_state > 0) {
             if (jump_state <= 2) {
                 character_y = 13;
@@ -260,7 +254,7 @@ void move_character() {
 }
 
 void draw_character(WINDOW* win) {
-    //ƒLƒƒƒ‰ƒNƒ^[‚Ì•`‰æ
+    //ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®æç”»
     switch (character_state) {
 
     case 0:
@@ -308,8 +302,8 @@ void draw_power(WINDOW* win, int current_time) {
         if (i >= 7) {
             wattron(win, COLOR_PAIR(1));
         }
-        mvwaddstr(win, 23 - i, 70, "¡");
-        mvwaddstr(win, 23 - i, 72, "¡");
+        mvwaddstr(win, 23 - i, 70, "â– ");
+        mvwaddstr(win, 23 - i, 72, "â– ");
     }
 
 }
