@@ -63,9 +63,13 @@ int main(int argc, char* argv[])
 
         //
 
-        if (judge_flag == true) {
+        if (judge_flag == true) {//初期画面
             wattron(win, COLOR_PAIR(2));
-            mvwaddstr(win, 12, 5, "GAME START -> PUSH ENTER");
+            mvwaddstr(win, 12, 15, "GAME START -> PUSH ENTER");
+            wattron(win, COLOR_PAIR(3));
+            mvwaddstr(win, 15, 20, "[ ゲーム説明 ]");
+            mvwaddstr(win, 17, 8, "このゲームはスペースキーを押して遊ぶゲームです");
+            mvwaddstr(win, 18, 9, "スペースキーを離すと人間がジャンプします");
         }
 
 
